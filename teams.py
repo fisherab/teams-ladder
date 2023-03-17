@@ -1,6 +1,6 @@
 import csv
 
-with open('Friday Ladder - Sheet1.csv', newline='') as csvfile:
+with open('Friday Ladder - Raw.csv', newline='') as csvfile:
     results = {}
     for row in csv.DictReader(csvfile):
         pairA = row['Pair A']
@@ -17,7 +17,7 @@ for name, scores in results.items():
     totals[name] = sum(points)
 
 scores = sorted(totals.items(), key=lambda item: item[1], reverse=True)
-with open('Friday Ladder - Sheet2.csv', newline='', mode='w') as csvfile:
+with open('Friday Ladder - Analysed.csv', newline='', mode='w') as csvfile:
     fieldnames = ["Name", "Points", "Individual"]
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
